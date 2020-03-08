@@ -61,7 +61,12 @@ public class QuadTree : MonoBehaviour
 
     public bool Insert(Vector2 p)
     {
-  
+
+        if (halfDimension <= minSize)
+        {
+            Debug.Log(halfDimension);
+            return false;
+        }
         // Ignore objects that do not belong in this quad tree
         if (!boundary.containsPoint(p))
         {
@@ -96,41 +101,29 @@ public class QuadTree : MonoBehaviour
     private void Subdivide()
     {
         var newHalfDimensions = halfDimension / 2;
-        
-        var nwGo = Instantiate(prefab);
-        northWest = nwGo.GetComponent<QuadTree>();
+        var northEastCenter = new Vector2(center.x - newHalfDimensions, center.y + newHalfDimensions);
         var northWestCenter = new Vector2(center.x + newHalfDimensions , center.y + newHalfDimensions );
-        northWest.boundary = new AABB(northWestCenter, newHalfDimensions);
-        northWest.points = points = new Vector2[qtNodeCapacity];
-        northWest.center = northWestCenter;
-        northWest.halfDimension = newHalfDimensions;
-        
-        var neGO = Instantiate(prefab);
-        northEast = neGO.GetComponent<QuadTree>();
-        var northEastCenter = new Vector2(center.x - newHalfDimensions , center.y + newHalfDimensions );
-        northEast.boundary = new AABB(northEastCenter, newHalfDimensions);
-        northEast.points = points = new Vector2[qtNodeCapacity];
-        northEast.center = northEastCenter;
-        northEast.halfDimension = newHalfDimensions;
-
-        var swGO = Instantiate(prefab);
-        southWest = swGO.GetComponent<QuadTree>();
         var southWestCenter = new Vector2(center.x + newHalfDimensions , center.y - newHalfDimensions );
-        southWest.boundary = new AABB(southWestCenter, newHalfDimensions);
-        southWest.points = points = new Vector2[qtNodeCapacity];
-        southWest.center = southWestCenter;
-        southWest.halfDimension = newHalfDimensions;
-
-        var seGO = Instantiate(prefab);
-        southEast = seGO.GetComponent<QuadTree>();
         var southEastCenter = new Vector2(center.x - newHalfDimensions , center.y - newHalfDimensions );
-        southEast.boundary = new AABB(southEastCenter, newHalfDimensions);
-        southEast.points = points = new Vector2[qtNodeCapacity];
-        southEast.center = southEastCenter;
-        southEast.halfDimension = newHalfDimensions;
+
+        InstantiateNode(newHalfDimensions, ref northEast, northEastCenter);
+        InstantiateNode(newHalfDimensions, ref northWest, northWestCenter);
+        InstantiateNode(newHalfDimensions, ref southWest, southWestCenter);
+        InstantiateNode(newHalfDimensions, ref southEast, southEastCenter);
 
         gameObject.SetActive(false);
 
+    }
+
+    private void InstantiateNode(float newHalfDimensions, ref QuadTree quadTree, Vector2 newCenter)
+    {
+        var go = Instantiate(prefab);
+        quadTree = go.GetComponent<QuadTree>();
+        quadTree.boundary = new AABB(newCenter, newHalfDimensions);
+        quadTree.points = points = new Vector2[qtNodeCapacity];
+        quadTree.center = newCenter;
+        quadTree.halfDimension = newHalfDimensions;
+        quadTree.minSize = minSize;
     }
 
 
