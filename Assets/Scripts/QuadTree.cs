@@ -20,13 +20,14 @@ public class QuadTree : MonoBehaviour
     // to represent the boundaries of this quad tree
     public AABB boundary;
     // Points in this quad tree node
-    private Vector2[] points;
-
+    private Vector2?[] points;
+    private int nextIn;
+    
     private QuadTree northWest;
     private QuadTree northEast;
     private QuadTree southWest;
     private QuadTree southEast;
-
+    
     private MeshRenderer renderer;
 
 
@@ -35,9 +36,10 @@ public class QuadTree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        nextIn = 0;
         renderer = GetComponent<MeshRenderer>();
         renderer.enabled = true;
-        points = new Vector2[qtNodeCapacity];
+        points = new Vector2?[qtNodeCapacity];
         boundary = new AABB(center, halfDimension);
         var transform1 = transform;
         transform1.position = center;
@@ -47,9 +49,10 @@ public class QuadTree : MonoBehaviour
     // Update is called once per frame
     void OnEnable()
     {
+        nextIn = 0;
         renderer = GetComponent<MeshRenderer>();
         renderer.enabled = true;
-        points = new Vector2[qtNodeCapacity];
+        points = new Vector2?[qtNodeCapacity];
         boundary = new AABB(center, halfDimension);
         var transform1 = transform;
         transform1.position = center;
@@ -62,21 +65,22 @@ public class QuadTree : MonoBehaviour
     public bool Insert(Vector2 p)
     {
 
-        if (halfDimension <= minSize)
-        {
-            Debug.Log(halfDimension);
-            return false;
-        }
+
         // Ignore objects that do not belong in this quad tree
         if (!boundary.containsPoint(p))
         {
             return false;
         }
-        // If there is space in this quad tree and if doesn't have subdivisions, add the object here
-        if (points.Length < qtNodeCapacity && northWest == null)
+        
+        if (halfDimension <= minSize)
         {
-
-            points.Append(p);
+            return false;
+        }
+        
+        // If there is space in this quad tree and if doesn't have subdivisions, add the object here
+        if (nextIn < qtNodeCapacity && northWest == null)
+        {
+            points[nextIn++] = p;
             return true;
         }
         // Otherwise, subdivide and then add the point to whichever node will accept it
@@ -120,10 +124,49 @@ public class QuadTree : MonoBehaviour
         var go = Instantiate(prefab);
         quadTree = go.GetComponent<QuadTree>();
         quadTree.boundary = new AABB(newCenter, newHalfDimensions);
-        quadTree.points = points = new Vector2[qtNodeCapacity];
+        quadTree.points = points = new Vector2?[qtNodeCapacity];
         quadTree.center = newCenter;
         quadTree.halfDimension = newHalfDimensions;
         quadTree.minSize = minSize;
+    }
+
+    public Vector2[] QueryRange(AABB range)
+    {
+        List<Vector2> pointsInRange = new List<Vector2>();
+
+        if (!boundary.intersectsAABB(range))
+            return pointsInRange.ToArray();
+        for (int p = 0; p < points.Length; p++)
+        {
+            var currentPoint = points[p];
+            if (!currentPoint.HasValue) continue;
+            if (range.containsPoint((Vector2)currentPoint))
+                pointsInRange.Add((Vector2) currentPoint);
+        }
+
+        if (northWest == null)
+            return pointsInRange.ToArray();
+
+        pointsInRange.AddRange(northWest.QueryRange(range));
+        pointsInRange.AddRange(northEast.QueryRange(range));
+        pointsInRange.AddRange(southWest.QueryRange(range));
+        pointsInRange.AddRange(southEast.QueryRange(range));
+
+        return pointsInRange.ToArray();
+    }
+
+    public QuadTree[] DestroyNodesInRange(AABB range)
+    {
+        var nodes = new List<QuadTree>();
+
+ 
+        if (northWest == null) return nodes.ToArray();
+        nodes.AddRange(northWest.DestroyNodesInRange(range));
+        nodes.AddRange(northEast.DestroyNodesInRange(range));
+        nodes.AddRange(southWest.DestroyNodesInRange(range));
+        nodes.AddRange(southEast.DestroyNodesInRange(range));
+
+        return nodes.ToArray();
     }
 
 

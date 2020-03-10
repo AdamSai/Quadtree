@@ -2,10 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb090cf7-5a17-41bd-b8a2-05db7e3462b5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Quadtree/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quadtree/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Quadtree/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quadtree/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Quadtree/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Quadtree/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/QuadTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/QuadTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Quadtree.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Quadtree.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Node.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Node.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/QuadTree.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/QuadTree.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quadtree.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quadtree.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quadtree.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Quadtree.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Quadtree.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Quadtree.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Quadtree.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Quadtree.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Square.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SquareMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SquareMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Untitled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Untitled.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/node 1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/node 1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,14 +37,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/QuadTree.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/QuadTree.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/QuadTree.cs" />
+        <option value="$PROJECT_DIR$/Assets/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/QuadTree.cs" />
       </list>
     </option>
   </component>
@@ -75,7 +97,10 @@
       <option name="presentableId" value="Default" />
       <updated>1583672956929</updated>
       <workItem from="1583672963949" duration="13822000" />
-      <workItem from="1583689193144" duration="903000" />
+      <workItem from="1583689193144" duration="1154000" />
+      <workItem from="1583696363500" duration="2482000" />
+      <workItem from="1583825902627" duration="3178000" />
+      <workItem from="1583840543826" duration="1372000" />
     </task>
     <servers />
   </component>
@@ -86,7 +111,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
