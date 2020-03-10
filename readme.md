@@ -10,4 +10,6 @@ The root object is the root of the Quadtree. It uses a prefab to instantiate chi
 ### Before subdivision 
 ![](./img/initial.png)
 ### After subdivision  
-![](./img/subdivide.png)
+![](./img/subdivide.png)  
+### Points inside Quadtree
+![](./img/points.png)
