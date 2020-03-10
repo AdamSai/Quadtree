@@ -1,6 +1,6 @@
 # Quadtree implementation in Unity 2019.3
 There's still a few quirks to work out but it works fine as a demonstration. Used https://en.wikipedia.org/wiki/Quadtree for reference.  
-**Git lfs must be installed before cloning in order to download all the assets.** It can be [downloaded here.](https://git-lfs.github.com/)
+## **Git lfs must be installed before cloning in order to download all the assets.** It can be [downloaded here.](https://git-lfs.github.com/)
 ## How to:
 1. Open the Quadtree.scene
 2. Press play and use left click to place a point in the Quadtree. The nodes will subdivide when it has 4 points inside and you try to place a 5th.  
