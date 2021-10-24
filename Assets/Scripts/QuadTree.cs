@@ -28,7 +28,7 @@ public class QuadTree : MonoBehaviour
     private QuadTree southWest;
     private QuadTree southEast;
     
-    private MeshRenderer renderer;
+    private SpriteRenderer renderer;
 
 
 
@@ -37,7 +37,7 @@ public class QuadTree : MonoBehaviour
     void Start()
     {
         nextIn = 0;
-        renderer = GetComponent<MeshRenderer>();
+        renderer = GetComponent<SpriteRenderer>();
         renderer.enabled = true;
         points = new Vector2?[qtNodeCapacity];
         boundary = new AABB(center, halfDimension);
@@ -50,7 +50,7 @@ public class QuadTree : MonoBehaviour
     void OnEnable()
     {
         nextIn = 0;
-        renderer = GetComponent<MeshRenderer>();
+        renderer = GetComponent<SpriteRenderer>();
         renderer.enabled = true;
         points = new Vector2?[qtNodeCapacity];
         boundary = new AABB(center, halfDimension);
